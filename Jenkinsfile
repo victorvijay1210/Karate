@@ -5,19 +5,23 @@ pipeline {
     stages {
         stage('Run Test') {
             steps {
-            bat label: '', script:'mvn clean verify'
+            bat label: '', script:'mvn clean test'
             }
             
             
       
     }
 
-    post {
-        always {
-            cucumber '**/cucumber.json'
-        }
-    }
 
+ stages {
+        stage('report') {
+            steps {
+cucumber buildStatus: 'null', customCssFiles: '', customJsFiles: '', failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '', pendingStepsNumber: -1, skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1            }
+            
+            
+      
+    }
+    }
             
 
        
