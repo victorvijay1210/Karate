@@ -25,13 +25,13 @@ import io.cucumber.junit.CucumberOptions;
 
 import io.cucumber.junit.Cucumber;
 
-//@RunWith(Cucumber.class)
-//@CucumberOptions(features = "src/test/java/testdemo/getAPI.feature", glue = {
-//		"testdemo" }, tags = "@karatedemo2", monochrome = true, plugin = { "json:target/cucumber.json"}
-//)
-//
-@SuppressWarnings("deprecation")
-@KarateOptions(tags = {"~@ignore"})
+@RunWith(Cucumber.class)
+@CucumberOptions(features = "src/test/java/testdemo/getAPI.feature", glue = {
+		"testdemo" }, tags = "@karatedemo2", monochrome = true, plugin = { "json:target/cucumber.json"}
+)
+////
+//@SuppressWarnings("deprecation")
+//@KarateOptions(tags = {"~@ignore"})
 public class TestRunner {
 	
 	
@@ -46,14 +46,16 @@ public class TestRunner {
 	       assertTrue(results.getErrorMessages(), results.getFailCount() == 0);
 	   }
 
-	   public static void generateReport(String karateOutputPath) {
-	       Collection<File> jsonFiles = FileUtils.listFiles(new File(karateOutputPath), new String[] {"json"}, true);
-	       List<String> jsonPaths = new ArrayList<>(jsonFiles.size());
-	       jsonFiles.forEach(file -> jsonPaths.add(file.getAbsolutePath()));
-	       Configuration config = new Configuration(new File("report"), "karate demo");
-	       ReportBuilder reportBuilder = new ReportBuilder(jsonPaths, config);
-	       reportBuilder.generateReports();
-	   }
+	@SuppressWarnings("unchecked")
+	public static void generateReport(String karateOutputPath) {
+		Collection<File> jsonFiles = FileUtils.listFiles(new File(karateOutputPath), new String[] {"json"}, true);
+		@SuppressWarnings("rawtypes")
+		List<String> jsonPaths = new ArrayList(jsonFiles.size());
+		jsonFiles.forEach(file -> jsonPaths.add(file.getAbsolutePath()));
+		Configuration config = new Configuration(new File("target"), "karateTesting");
+		ReportBuilder reportBuilder = new ReportBuilder(jsonPaths, config);
+		reportBuilder.generateReports();
+		    }
 
 
 }
