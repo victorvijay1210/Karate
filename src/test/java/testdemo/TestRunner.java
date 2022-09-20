@@ -25,13 +25,13 @@ import io.cucumber.junit.CucumberOptions;
 
 import io.cucumber.junit.Cucumber;
 
-@RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/java/testdemo/getAPI.feature", glue = {
-		"testdemo" }, tags = "@karatedemo2", monochrome = true, plugin = { "json:target/cucumber.json"}
-)
+//@RunWith(Cucumber.class)
+//@CucumberOptions(features = "src/test/java/testdemo/getAPI.feature", glue = {
+//		"testdemo" }, tags = "@karatedemo2", monochrome = true, plugin = { "json:target/cucumber.json"}
+//)
 ////
-//@SuppressWarnings("deprecation")
-//@KarateOptions(tags = {"~@ignore"})
+@SuppressWarnings("deprecation")
+@KarateOptions(tags = {"~@ignore"})
 public class TestRunner {
 	
 	
