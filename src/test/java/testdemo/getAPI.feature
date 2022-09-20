@@ -1,4 +1,4 @@
-@karatedemo_testcases
+#@karatedemo_testcases
 Feature: GET API Test
 
 
@@ -17,7 +17,7 @@ Feature: GET API Test
 #* match name == 'Ananta Khatri'
 #* match gender == 'female'
 
-@karatedemo2
+#@karatedemo2
 Scenario: get user not found details
 Given url baseUrl+'/public/v2/users'
 And path '1'
